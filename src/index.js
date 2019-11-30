@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
+import './i18n';
 import * as serviceWorker from './serviceWorker';
-import PrincipalContent from './components/PrincipalContent';
+import {PrincipalContent} from './components/PrincipalContent';
 
 ReactDOM.render(<PrincipalContent/>, document.getElementById('root'));
 

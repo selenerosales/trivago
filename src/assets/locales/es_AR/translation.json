@@ -1,0 +1,24 @@
+{
+  "app": {
+    "btn":{
+      "es": "Español",
+      "en": "Ingles",
+      "search":"Buscar"
+    },
+    "room":{
+      "single":"Individual",
+      "double" :"Doble",
+      "family": "Familiar",
+      "multiple":"Multiple"
+    },
+    "title":{
+      "principal":"Buenas Tardes",
+      "secondary":"Buscá una ciudad, hotel o hasta un lugar famoso"
+    },
+    "label":{
+      "start":"Salida",
+      "end":"Llegada",
+      "room":"Habitacion"
+    }
+  }
+}

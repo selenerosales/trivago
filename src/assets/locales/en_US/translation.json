@@ -1,0 +1,24 @@
+{
+  "app": {
+    "btn":{
+      "es": "Spanish",
+      "en": "English",
+      "search":"Search"
+    },
+    "room":{
+      "single":"Single",
+      "double" :"Double",
+      "family": "Family",
+      "multiple":"Multiple"
+    },
+    "title":{
+      "principal":"Good Afternoon",
+      "secondary":"Search for a city, hotel or even a famous place"
+    },
+    "label":{
+      "start":"Start",
+      "end":"End",
+      "room":"Room"
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import NavHeader from './NavHeader';
-import SearchComponent from './SearchComponent';
+import {SearchComponent }from './SearchComponent';
+import { withTranslation } from "react-i18next";
+import { NavHeader } from './NavHeader';
 
 class PrincipalContent extends React.Component {
     render(){
@@ -15,5 +16,5 @@ class PrincipalContent extends React.Component {
         )
     }
 }
-
-export default PrincipalContent
+const componenteTraducido = withTranslation()(PrincipalContent);
+export { componenteTraducido as PrincipalContent };
