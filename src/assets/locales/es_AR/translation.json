@@ -19,6 +19,12 @@
       "start":"Salida",
       "end":"Llegada",
       "room":"Habitacion"
+    },
+    "constants": {
+      "languages": {
+        "es_AR": "Spanish",
+        "en_US": "English"
+      }
     }
   }
 }

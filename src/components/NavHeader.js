@@ -2,7 +2,6 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import LogoTrivago from '../images/trivago.png'
 import Typography from '@material-ui/core/Typography';
@@ -48,6 +47,7 @@ class NavHeader extends React.Component {
               onChange={(ev) => {
                 this.setLanguage(ev.target.value);
               }}
+
             >
               {Object.keys(appConstants.languages).map(key => (
                 <option  value={key}> {t(appConstants.languages[key].name)}</option>

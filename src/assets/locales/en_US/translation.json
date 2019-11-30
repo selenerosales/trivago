@@ -19,6 +19,12 @@
       "start":"Start",
       "end":"End",
       "room":"Room"
+    },
+    "constants": {
+      "languages": {
+        "es_AR": "Spanish",
+        "en_US": "English"
+      }
     }
   }
 }

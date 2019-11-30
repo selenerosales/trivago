@@ -5,12 +5,12 @@ export const appConstants = {
     languages: {
         es_AR: {
             key: 'es_AR',
-            name: 'constants.languages.es_AR',
+            name: 'app.constants.languages.es_AR',
             icon: es_AR
         },
         en_US: {
             key: 'en_US',
-            name: 'constants.languages.en_US',
+            name: 'app.constants.languages.en_US',
             icon: en_US
         }
     },
