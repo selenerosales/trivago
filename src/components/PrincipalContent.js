@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import NavHeader from '../pages/NavHeader';
+import NavHeader from './NavHeader';
 import SearchComponent from './SearchComponent';
 
 class PrincipalContent extends React.Component {
@@ -8,7 +8,7 @@ class PrincipalContent extends React.Component {
         return(
           <React.Fragment>
           <NavHeader/>
-          <Container maxWidth="md">
+          <Container maxWidth="lg">
              <SearchComponent/>
           </Container>
         </React.Fragment>
