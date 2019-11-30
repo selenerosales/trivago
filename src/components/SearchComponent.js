@@ -48,19 +48,37 @@ const styles = {
 
 class SearchComponent extends React.Component {
     state = {
-        dateSalida: new Date(),
-        dateLlegada: new Date(),
+        dateStart: new Date(),
+        dateEnd: new Date(),
         open: false,
         cities: data.cities,
         listFilter: [],
-        optSelected: ''
+        optSelected: '',
+        setIsOpen: false
+    }
+    //componente de busqueda
+
+    componentDidMount = () => {
+        //mockea los datos de las ciudades del json en un vector
+        this.setState({ listFilter: data.cities })
     }
 
-    handleDateChangeSalida(dateselect) {
-        this.setState({ dateSalida: dateselect })
+    handleDateChangeSalida = async (dateselect) => {
+        //setea la fecha seleccionada de salida
+         await this.setState({ dateStart: dateselect })
+         await this.setState({ dateEnd: dateselect })
+         await this.setState({setIsOpen : true })
+       
     }
-    handleDateChangeLlegada(dateselect) {
-        this.setState({ dateLlegada: dateselect })
+
+    handleDateChangeLlegada = (dateselect) => {
+        //setea la fecha seleccionada de llegada
+        this.setState({ dateEnd: dateselect })
+        this.setState({setIsOpen : false })
+    }
+
+    openCalendar = () => {
+
     }
 
     onfocus = () => {
@@ -71,13 +89,10 @@ class SearchComponent extends React.Component {
         this.setState({ open: false })
     }
 
-    componentDidMount = () => {
-        this.setState({ listFilter: data.cities })
-    }
-
     onClick = (city) => {
         this.setState({ optSelected: city.name })
     }
+
     onChange = (ev) => {
         let search = ev.target.value
         let cities = this.state.cities
@@ -95,11 +110,8 @@ class SearchComponent extends React.Component {
         this.setState({ optSelected: ev.target.value })
     }
 
-
-
-
     render() {
-        const { dateSalida, dateLlegada, open, listFilter, optSelected } = this.state
+        const { dateStart, dateEnd, open, listFilter, optSelected, setIsOpen } = this.state
         const { classes, t } = this.props
 
         return (
@@ -107,7 +119,7 @@ class SearchComponent extends React.Component {
                 <div>
                     <h1>
                         <span className={classes.title}>{t('app.title.principal')}</span>
-                        <span className={t('app.title.secondary')}></span>
+                        <span className={classes.subtitle}>{t('app.title.secondary')}</span>
                     </h1>
                 </div>
                 <div className={classes.contdiv}>
@@ -147,28 +159,30 @@ class SearchComponent extends React.Component {
 
                     <div className={classes.content}>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <KeyboardDatePicker
+                                autoOk
+                                variant="inline"
+                                inputVariant="outlined"
+                                label={t('app.label.end')}
+                                format="dd/MM/yyyy"
+                                value={dateStart}
+                                disablePast
+                                InputAdornmentProps={{ position: "start" }}
+                                onChange={date => this.handleDateChangeSalida(date)}
+                            />
                             <KeyboardDatePicker
                                 autoOk
                                 variant="inline"
                                 inputVariant="outlined"
                                 label={t('app.label.start')}
                                 format="dd/MM/yyyy"
-                                value={dateLlegada}
+                                value={dateEnd}
                                 disablePast
                                 InputAdornmentProps={{ position: "start" }}
                                 onChange={date => this.handleDateChangeLlegada(date)}
+                                open={setIsOpen}
                             />
-                            <KeyboardDatePicker
-                                autoOk
-                                variant="inline"
-                                inputVariant="outlined"
-                                label={t('app.label.end')}
-                                format="dd/MM/yyyy"
-                                value={dateSalida}
-                                disablePast
-                                InputAdornmentProps={{ position: "start" }}
-                                onChange={date => this.handleDateChangeSalida(date)}
-                            />
+                            
                         </MuiPickersUtilsProvider>
                     </div>
                     <div className={classes.select}>
@@ -178,7 +192,7 @@ class SearchComponent extends React.Component {
                             </InputLabel>
                             <Select
                                 native
-                               // onChange={this.setRoom()}
+                            // onChange={this.setRoom()}
                             >
                                 <option value="" />
                                 <option value={1}>{t('app.room.single')}</option>

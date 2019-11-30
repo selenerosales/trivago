@@ -9,6 +9,7 @@ import { withTranslation } from "react-i18next";
 import {appConstants} from "../constants/app.constants";
 import Select from '@material-ui/core/Select'
 import i18n from '../i18n';
+import uuid from "uuidv4";
 
 const styles = {
   root: {
@@ -47,10 +48,10 @@ class NavHeader extends React.Component {
               onChange={(ev) => {
                 this.setLanguage(ev.target.value);
               }}
-
+              defaultValue="es_AR"
             >
               {Object.keys(appConstants.languages).map(key => (
-                <option  value={key}> {t(appConstants.languages[key].name)}</option>
+                <option key={uuid}  value={key}> {t(appConstants.languages[key].name)}</option>
               ))}
             </Select>
           </Toolbar>
