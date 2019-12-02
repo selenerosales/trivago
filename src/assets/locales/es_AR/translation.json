@@ -15,6 +15,10 @@
       "principal":"Buenas Tardes",
       "secondary":"Buscá una ciudad, hotel o hasta un lugar famoso"
     },
+    "subtitle":{
+      "principal":"¿Necesitás ideas para tu próximo viaje?",
+      "secondary":"Descubrí las mejores experiencias en hoteles en los más de 140 artículos de trivago Magazine, desde hoteles boutique en Mendoza hasta casas de campo encantadoras en Córdoba."
+    },
     "label":{
       "start":"Salida",
       "end":"Llegada",

@@ -17,7 +17,7 @@ const styles = {
   },
   grow: {
     flexGrow: 1,
-  },
+  },  
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -28,9 +28,10 @@ const styles = {
 
 };
 
+//componente header que se incluyo el framework i18next para poder brindarle un marco de internacionalizacion
 class NavHeader extends React.Component {
-
   setLanguage = async (res) => {
+    //se obtiene la instancia de 118n para cambiar el idioma, lo recibe como propiedad en la funcion
     await i18n.changeLanguage(res);
   }
   render() {
@@ -61,7 +62,7 @@ class NavHeader extends React.Component {
   }
 }
 
-
+// Se utiliza el HOC withTranslation donde obtiene la función t y la instancia i18n dentro de su componente
 const componenteTraducido = withTranslation()(NavHeader);
 const componente = withStyles(styles)(componenteTraducido);
 export { componente as NavHeader };

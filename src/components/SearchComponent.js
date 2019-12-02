@@ -22,7 +22,7 @@ import MomentUtils from "@date-io/moment";
 const styles = {
     root: {
         flexGrow: 1,
-        marginTop: '13%'
+        marginTop: '10%'
     },
     button: {
         margin: '20px',
@@ -80,19 +80,19 @@ class SearchComponent extends React.Component {
         this.setState({setIsOpen : false })
     }
 
-    openCalendar = () => {
-
-    }
 
     onfocus = () => {
+       //cambia de estado a true para abir el buscador y poder seleccionar una ciudad
         this.setState({ open: true })
     }
 
     onBlur = () => {
+          //cambia de estado a false para cerrar el buscador
         this.setState({ open: false })
     }
 
-    onClick = (city) => {
+    onClickSelect = (city) => {
+        //setea la funcion seleccionada
         this.setState({ optSelected: city.name })
     }
 
@@ -145,7 +145,7 @@ class SearchComponent extends React.Component {
                         {open ? <Paper style={{ width: 'fit-content' }}>
                             {listFilter.map((city, index) => {
                                 return (
-                                    <MenuItem value={city.name} onMouseDown={ev => this.onClick(city)} key={index} className={classes.menuItem}>
+                                    <MenuItem value={city.name} onMouseDown={ev => this.onClickSelect(city)} key={index} className={classes.menuItem}>
                                         <ListItemIcon className={classes.icon}>
                                             <span class="icon-ic ssg-suggestion__icon"><svg xmlns="http://www.w3.org/2000/svg" focusable="false" tabindex="-1" width="24" height="24" viewBox="0 0 24 24"><g class="svg-color--primary" fill="#007FAD" fill-rule="evenodd">
                                                 <path d="M12 5C9.8 5 8 6.8 8 9s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 7c-1.6 0-3-1.4-3-3s1.4-3 3-3 3 1.4 3 3-1.4 3-3 3z"></path>
@@ -165,6 +165,8 @@ class SearchComponent extends React.Component {
                         <KeyboardDatePicker
                                 autoOk
                                 variant="inline"
+                                cancelLabel="Clearable"
+                                clearable={true}
                                 inputVariant="outlined"
                                 label={t('app.label.end')}
                                 format="DD/MM/YYYY"
@@ -177,6 +179,8 @@ class SearchComponent extends React.Component {
                             <KeyboardDatePicker
                                 autoOk
                                 variant="inline"
+                                cancelLabel="Clearable"
+                                clearable={true}
                                 inputVariant="outlined"
                                 label={t('app.label.start')}
                                 format="DD/MM/YYYY"
@@ -186,6 +190,7 @@ class SearchComponent extends React.Component {
                                 InputAdornmentProps={{ position: "start" }}
                                 onChange={date => this.handleDateChangeLlegada(date)}
                                 open={setIsOpen}
+                               
                             />
                             
                         </MuiPickersUtilsProvider>
@@ -219,6 +224,7 @@ class SearchComponent extends React.Component {
     }
 }
 
+// Se utiliza el HOC withTranslation donde obtiene la función t y la instancia i18n dentro de su componente
 const componenteTraducido = withTranslation()(SearchComponent);
 const componente = withStyles(styles)(componenteTraducido);
 export { componente as SearchComponent };
