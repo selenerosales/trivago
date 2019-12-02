@@ -1,6 +1,5 @@
 import React from 'react';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { withTranslation } from "react-i18next";
@@ -16,6 +15,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import * as moment from 'moment';
+import 'moment/locale/es';
+import MomentUtils from "@date-io/moment";
 
 const styles = {
     root: {
@@ -54,7 +56,8 @@ class SearchComponent extends React.Component {
         cities: data.cities,
         listFilter: [],
         optSelected: '',
-        setIsOpen: false
+        setIsOpen: false,
+        locale:'es'
     }
     //componente de busqueda
 
@@ -111,7 +114,7 @@ class SearchComponent extends React.Component {
     }
 
     render() {
-        const { dateStart, dateEnd, open, listFilter, optSelected, setIsOpen } = this.state
+        const { dateStart, dateEnd, open, listFilter, optSelected, setIsOpen , locale} = this.state
         const { classes, t } = this.props
 
         return (
@@ -158,15 +161,16 @@ class SearchComponent extends React.Component {
                     </div>
 
                     <div className={classes.content}>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={locale} >
                         <KeyboardDatePicker
                                 autoOk
                                 variant="inline"
                                 inputVariant="outlined"
                                 label={t('app.label.end')}
-                                format="dd/MM/yyyy"
+                                format="DD/MM/YYYY"
                                 value={dateStart}
                                 disablePast
+                                locale={locale}
                                 InputAdornmentProps={{ position: "start" }}
                                 onChange={date => this.handleDateChangeSalida(date)}
                             />
@@ -175,8 +179,9 @@ class SearchComponent extends React.Component {
                                 variant="inline"
                                 inputVariant="outlined"
                                 label={t('app.label.start')}
-                                format="dd/MM/yyyy"
+                                format="DD/MM/YYYY"
                                 value={dateEnd}
+                                locale={locale}
                                 disablePast
                                 InputAdornmentProps={{ position: "start" }}
                                 onChange={date => this.handleDateChangeLlegada(date)}
