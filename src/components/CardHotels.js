@@ -35,5 +35,5 @@ function CardHotels(props) {
         })
     );
 }
-
+//hoc withStyles de material ui para el estilado 
 export default withStyles(styles)(CardHotels);

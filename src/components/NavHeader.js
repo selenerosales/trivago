@@ -61,7 +61,7 @@ class NavHeader extends React.Component {
     );
   }
 }
-
+//hoc withStyles de material ui para el estilado 
 // Se utiliza el HOC withTranslation donde obtiene la función t y la instancia i18n dentro de su componente
 const componenteTraducido = withTranslation()(NavHeader);
 const componente = withStyles(styles)(componenteTraducido);
