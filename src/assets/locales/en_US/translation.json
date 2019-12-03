@@ -24,6 +24,10 @@
       "end":"End",
       "room":"Room"
     },
+    "tab":{
+      "tab1":"Important cities",
+      "tab2":"Top destinations"
+    },
     "constants": {
       "languages": {
         "es_AR": "Spanish",

@@ -19,6 +19,6 @@ class PrincipalContent extends React.Component {
         )
     }
 }
-// Se utiliza el HOC withTranslation donde obtiene la función t y la instancia i18n dentro de su componente
+// Se utiliza el HOC withTranslation
 const componenteTraducido = withTranslation()(PrincipalContent);
 export { componenteTraducido as PrincipalContent };

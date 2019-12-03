@@ -31,7 +31,7 @@ const styles = {
 //componente header que se incluyo el framework i18next para poder brindarle un marco de internacionalizacion
 class NavHeader extends React.Component {
   setLanguage = async (res) => {
-    //se obtiene la instancia de 118n para cambiar el idioma, lo recibe como propiedad en la funcion
+    //se obtiene la instancia de 118n para cambiar el idioma,  recibe como propiedad  el idioma en la funcion
     await i18n.changeLanguage(res);
   }
   render() {

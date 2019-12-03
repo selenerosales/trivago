@@ -17,6 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import * as moment from 'moment';
 import 'moment/locale/es';
+import CardHotels from './CardHotels.js';
 import MomentUtils from "@date-io/moment";
 
 const styles = {
@@ -54,7 +55,9 @@ class SearchComponent extends React.Component {
         dateEnd: new Date(),
         open: false,
         cities: data.cities,
+        hotels: data.hotels,
         listFilter: [],
+        hotelFilter: [],
         optSelected: '',
         setIsOpen: false,
         locale:'es'
@@ -67,7 +70,6 @@ class SearchComponent extends React.Component {
     }
 
     handleDateChangeSalida = async (dateselect) => {
-        //setea la fecha seleccionada de salida
          await this.setState({ dateStart: dateselect })
          await this.setState({ dateEnd: dateselect })
          await this.setState({setIsOpen : true })
@@ -75,7 +77,6 @@ class SearchComponent extends React.Component {
     }
 
     handleDateChangeLlegada = (dateselect) => {
-        //setea la fecha seleccionada de llegada
         this.setState({ dateEnd: dateselect })
         this.setState({setIsOpen : false })
     }
@@ -92,8 +93,19 @@ class SearchComponent extends React.Component {
     }
 
     onClickSelect = (city) => {
-        //setea la funcion seleccionada
-        this.setState({ optSelected: city.name })
+        
+       this.setState({ optSelected: city.name })
+       let hotels = this.state.hotels
+       let filter = []
+       //recorre una lista ,  compara el codigo para guardarlo en un objeto y poder filtrarlo
+       // eslint-disable-next-line 
+       hotels.map(hotel => {
+           if (parseInt(hotel.codCity) === parseInt(city.codCity)) {
+               let obj = hotel
+               filter.push(obj)
+           }
+       })
+       this.setState({ hotelFilter: filter })
     }
 
     onChange = (ev) => {
@@ -114,7 +126,7 @@ class SearchComponent extends React.Component {
     }
 
     render() {
-        const { dateStart, dateEnd, open, listFilter, optSelected, setIsOpen , locale} = this.state
+        const { dateStart, dateEnd, open, listFilter, optSelected, setIsOpen , locale,  hotelFilter} = this.state
         const { classes, t } = this.props
 
         return (
@@ -165,10 +177,9 @@ class SearchComponent extends React.Component {
                         <KeyboardDatePicker
                                 autoOk
                                 variant="inline"
-                                cancelLabel="Clearable"
-                                clearable={true}
+                                disableToolbar
                                 inputVariant="outlined"
-                                label={t('app.label.end')}
+                                label={t('app.label.start')}
                                 format="DD/MM/YYYY"
                                 value={dateStart}
                                 disablePast
@@ -179,10 +190,9 @@ class SearchComponent extends React.Component {
                             <KeyboardDatePicker
                                 autoOk
                                 variant="inline"
-                                cancelLabel="Clearable"
-                                clearable={true}
+                                disableToolbar
                                 inputVariant="outlined"
-                                label={t('app.label.start')}
+                                label={t('app.label.end')}
                                 format="DD/MM/YYYY"
                                 value={dateEnd}
                                 locale={locale}
@@ -202,7 +212,6 @@ class SearchComponent extends React.Component {
                             </InputLabel>
                             <Select
                                 native
-                            // onChange={this.setRoom()}
                             >
                                 <option value="" />
                                 <option value={1}>{t('app.room.single')}</option>
@@ -217,7 +226,7 @@ class SearchComponent extends React.Component {
                     </div>
 
                 </div>
-
+                <CardHotels hotels={hotelFilter} />
             </div>
 
         )

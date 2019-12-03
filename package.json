@@ -16,6 +16,7 @@
     "react-calendar": "^2.19.2",
     "react-dom": "^16.12.0",
     "react-i18next": "^11.2.5",
+    "react-material-ui-carousel": "^1.0.0",
     "react-scripts": "3.2.0",
     "react-select": "^3.0.8",
     "uuidv4": "^6.0.0"

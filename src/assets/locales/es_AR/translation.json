@@ -24,6 +24,10 @@
       "end":"Llegada",
       "room":"Habitacion"
     },
+    "tab":{
+      "tab1":"Ciudades Destacadas",
+      "tab2":"Principales Destinos"
+    },
     "constants": {
       "languages": {
         "es_AR": "Español",

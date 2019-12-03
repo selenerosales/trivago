@@ -5,6 +5,7 @@ import LogoMagazine from '../images/trivago-magazine.jpg'
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { CarouselComponent } from './CarouselComponent';
 
 const styles = {
     root: {
@@ -26,20 +27,26 @@ const styles = {
     img: {
         width: '220px'
     },
+    card: {
+        display:'flex'  
+      },
+      media: {
+        display:'block'  
+      },
 }
 
 class DescriptionContent extends React.Component {
     state = {
-        tabVal:0
+        tabVal: 0
     }
 
     handleChangeTab = (event, tabValue) => {
-        this.setState({tabVal: tabValue })
+        this.setState({ tabVal: tabValue })
     }
 
     render() {
         const { classes, t } = this.props
-        const {tabVal} = this.state
+        const { tabVal } = this.state
         return (
             <div className={classes.root}>
                 <div>
@@ -51,26 +58,24 @@ class DescriptionContent extends React.Component {
                 <div className={classes.contdiv}>
                     <img src={LogoMagazine} alt="Logo" className={classes.img} />
                 </div>
-
                 <div>
                     <Paper square>
-                    <Tabs
-                        value={tabVal}
-                        indicatorColor="primary"
-                        textColor="primary"
-                        variant="scrollable"
-                        scrollButtons="of"
-                        onChange={this.handleChangeTab}
-                        classes={{ root: "w-full h-64" }}      
-                    >
-                        <Tab className="h-64 normal-case" label="Ciudades Destacadas" />
-                        <Tab className="h-64 normal-case" label="Principales Destinos" />
-                    </Tabs>
-                    {this.state.tabValue === 0 &&
+                        <Tabs
+                            value={tabVal}
+                            indicatorColor="primary"
+                            textColor="primary"
+                            variant="scrollable"
+                            onChange={this.handleChangeTab}
+                            classes={{ root: "w-full h-64" }}
+                        >
+                            <Tab className="h-64 normal-case" label={t('app.tab.tab1')} />
+                            <Tab className="h-64 normal-case" label={t('app.tab.tab2')} />
+                        </Tabs>
+                        {this.state.tabVal === 0 &&
                             (
-                                <p>prueba 1</p>  
+                            <CarouselComponent/>
                             )}
-                        {this.state.tabValue === 1 && (
+                        {this.state.tabVal === 1 && (
                             <p>prueba 2</p>
                         )}
                     </Paper>
