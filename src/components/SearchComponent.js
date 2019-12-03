@@ -159,7 +159,7 @@ class SearchComponent extends React.Component {
                                 return (
                                     <MenuItem value={city.name} onMouseDown={ev => this.onClickSelect(city)} key={index} className={classes.menuItem}>
                                         <ListItemIcon className={classes.icon}>
-                                            <span class="icon-ic ssg-suggestion__icon"><svg xmlns="http://www.w3.org/2000/svg" focusable="false" tabindex="-1" width="24" height="24" viewBox="0 0 24 24"><g class="svg-color--primary" fill="#007FAD" fill-rule="evenodd">
+                                            <span class="icon-ic ssg-suggestion__icon"><svg xmlns="http://www.w3.org/2000/svg" focusable="false" width="24" height="24" viewBox="0 0 24 24"><g class="svg-color--primary" fill="#007FAD" fill-rule="evenodd">
                                                 <path d="M12 5C9.8 5 8 6.8 8 9s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 7c-1.6 0-3-1.4-3-3s1.4-3 3-3 3 1.4 3 3-1.4 3-3 3z"></path>
                                                 <path d="M18 8.2C17.6 5.3 15 3 12 3S6.4 5.3 6 8.2V9c0 .7.1 1.4.4 2.1l4.8 9.4c.2.3.5.5.9.5s.7-.2.9-.5l4.8-9.4c.1-.7.2-1.4.2-2.1v-.8zm-1.3 2.5L12 20l-4.7-9.3C7.1 10.2 7 9.6 7 9v-.6C7.4 5.9 9.5 4 12 4s4.6 1.9 5 4.4V9c0 .6-.1 1.2-.3 1.7z"></path>
                                             </g></svg></span>

@@ -18,7 +18,7 @@ function CardHotels(props) {
     return (
         hotels.map(hotel => {
             return (
-                <Card className={classes.media} >
+                <Card key={hotel.codCity} className={classes.media} >
                     <CardActionArea>
                          <img src= {hotel.url} alt="Logo" className={classes.img} />
                         <CardContent>
