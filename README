@@ -1,0 +1,15 @@
+Para poder ejecutar el proyecto en el directorio puede ejecutar :
+1) npm i
+2) npm start o yarn start
+
+Ejecuta la aplicación en modo de desarrollo.
+Abra http: // localhost: 3000 para verlo en el navegador.
+
+Framework utilizado i18n para brindarle un marco de internacionalizacion en este caso con la lengua inglesa. 
+Ademas cuenta con una estructura que se adapta a cualquier idioma requerido
+
+Material ui decidi utilizarlo para aprovechar las recomendaciones de Material Desing para la elaboracion del proyecto, ademas de contar con componentes detallados en cuando a diseño y usabilidad
+
+
+
+
